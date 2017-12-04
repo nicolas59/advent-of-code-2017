@@ -1,4 +1,5 @@
 var getDistance = require("../day3").getDistance
+var getValue = require("../day3").getValue
 
 var assert = require("assert");
 var fs = require("fs");
@@ -29,6 +30,24 @@ describe('Test for day3', function () {
         assert.equal(+480, getDistance("347991"));
      });
     
-    
+     it('must be equal 4', function () {
+        assert.equal(0, getValue("3"));
+    });
+
+    it('must be equal 23', function () {
+        assert.equal(23, getValue("12"));
+    });
+
+    it('must be equal 806', function () {
+        assert.equal(806, getValue("748"));
+    });
+
+    it('must be equal 747', function () {
+        assert.equal(747, getValue("747"));
+    });
+
+    it('must be equal +349975', function () {
+        assert.equal(+349975, getValue("347991"));
+    });
 
 });
