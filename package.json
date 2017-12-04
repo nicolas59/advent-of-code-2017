@@ -1,0 +1,11 @@
+{
+  "name": "advenceofcode2017",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --watch \"test/*.spec.js\""
+  },
+  "author": "",
+  "license": "ISC"
+}
