@@ -58,8 +58,8 @@ function getDistance(data:string) :number {
     return Math.abs(x) + Math.abs(y);
 }
 
-function getRealValue(val) : number{
-    return val?val:0;
+function getRealValue(val:any) : number{
+    return Number(val)?val:0;
 }
 
 function getValue(data:string) :number {
@@ -69,7 +69,7 @@ function getValue(data:string) :number {
      currentMove = 2, caseToMove =1;
     var sens :Sens = Sens.RIGHT;
 
-    var tabValue = {};
+    var tabValue :any = {};
     tabValue[`0, 0`] =1;
     for(var index=2;index<=val;index++){
         var nextDirection;

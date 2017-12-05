@@ -1,5 +1,5 @@
-var getDistance = require("../day3").getDistance
-var getValue = require("../day3").getValue
+var getDistance = require("../dist/day3").getDistance
+var getValue = require("../dist/day3").getValue
 
 var assert = require("assert");
 var fs = require("fs");

@@ -8,8 +8,8 @@
 */
 
 var assert = require('assert');
-var sum = require("../day1").sum
-var sumHalfway = require("../day1").sumHalfway
+var sum = require("../dist/day1").sum
+var sumHalfway = require("../dist/day1").sumHalfway
 
 console.log(sum);
 

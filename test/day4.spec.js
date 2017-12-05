@@ -1,6 +1,6 @@
-var isAvailablePassPhrases = require("../day4").isAvailablePassPhrases
-var getNumberOfAvailablesPassPhrases = require("../day4").getNumberOfAvailablesPassPhrases;
-var isAvailablePassPhrasesWitoutAnagram = require("../day4").isAvailablePassPhrasesWitoutAnagram;
+var isAvailablePassPhrases = require("../dist/day4").isAvailablePassPhrases
+var getNumberOfAvailablesPassPhrases = require("../dist/day4").getNumberOfAvailablesPassPhrases;
+var isAvailablePassPhrasesWitoutAnagram = require("../dist/day4").isAvailablePassPhrasesWitoutAnagram;
 var assert = require("assert");
 var fs = require("fs");
 var data;

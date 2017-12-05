@@ -1,7 +1,7 @@
-var checkSumByLine = require("../day2").checkSumByLine;
-var checkSum = require("../day2").checkSum;
-var checkSumByLineWithDivisible = require("../day2").checkSumByLineWithDivisible
-var checkSumWithDivisible = require("../day2").checkSumWithDivisible
+var checkSumByLine = require("../dist/day2").checkSumByLine;
+var checkSum = require("../dist/day2").checkSum;
+var checkSumByLineWithDivisible = require("../dist/day2").checkSumByLineWithDivisible
+var checkSumWithDivisible = require("../dist/day2").checkSumWithDivisible
 
 var assert = require("assert");
 var fs = require("fs");

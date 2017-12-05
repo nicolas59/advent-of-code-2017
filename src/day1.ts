@@ -3,7 +3,7 @@ function sum(data: string) {
     return data.split("")
     .map((val, index, array) => {
        return (index === array.length - 1 && val === array[0])
-        || ( val === array[index + 1]) ? parsent(val):0;
+        || ( val === array[index + 1]) ? parseInt(val):0;
     }).reduce((previous, next)=> previous+next);
 }
 

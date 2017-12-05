@@ -10,7 +10,7 @@ return data.match(/([0-9]+)/g)
 }
 
 
-function checkSum(data, fn:(string) => (number)) {
+function checkSum(data:string, fn:(arg: string) => (number)) {
     return data.split("\n")
     .map(line => fn(line))
     .reduce((a,b)=> a+b);
