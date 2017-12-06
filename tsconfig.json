@@ -5,7 +5,7 @@
         "lib": [  
             "es6",
             "es5",
-            "es2015"
+            "es2015", "DOM"
        ],
         "allowJs": true,        
         "target": "es6",
