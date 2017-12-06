@@ -5,7 +5,7 @@ interface Result {
 }
 
 function getMaxIndex(array:Array<number>) {
-    var ret = 0;
+    var ret = 0;    
     var max = 0;
     array.forEach((item, idx) => {
         if(item>max){
@@ -22,10 +22,10 @@ function getNumberOfCycles(data:string):Result{
     var ret : Result;
     let cache = new Map<string, number>();
     for(var count =1;; count++){
-        var maxIndex = getMaxIndex(tab);
-        var val = tab[maxIndex];
-        tab[maxIndex] = 0;
-        var pos = maxIndex;
+        var pos = getMaxIndex(tab);
+        var val = tab[pos];
+        tab[pos] = 0;
+        //var pos = maxIndex;
         for(;val != 0; val--){
             pos =  pos === tabLength-1?0:++pos;
             tab[pos]++;
