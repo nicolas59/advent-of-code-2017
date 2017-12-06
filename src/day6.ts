@@ -4,45 +4,40 @@ interface Result {
     blockBeforeRepetition : number
 }
 
+function getMaxIndex(array:Array<number>) {
+    var ret = 0;
+    var max = 0;
+    array.forEach((item, idx) => {
+        if(item>max){
+            ret = idx;
+            max = item;
+        }
+    });
+    return ret;
+}
 
 function getNumberOfCycles(data:string):Result{
-    var tab = data.match(/([0-9]+)/g).map(item => parseInt(item));
-    var getMaxIndex = (array:Array<number>) =>{
-        var ret = 0;
-        var max = 0;
-        array.forEach((item, idx) => {
-            if(item>max){
-                ret = idx;
-                max = item;
-            }
-        });
-        return ret;
-
-    }
-
- var ret : Result;
-    var count =0;
-    var cache:any={};
-    //cache[tab.join(' ')] =0;
-    while(true){
+    var tab = data.split(/\s/).map(item => parseInt(item));  
+    const tabLength = tab.length;
+    var ret : Result;
+    let cache = new Map<string, number>();
+    for(var count =1;; count++){
         var maxIndex = getMaxIndex(tab);
-        count++;
         var val = tab[maxIndex];
         tab[maxIndex] = 0;
         var pos = maxIndex;
         for(;val != 0; val--){
-            pos =  pos === tab.length-1?0:++pos;
+            pos =  pos === tabLength-1?0:++pos;
             tab[pos]++;
         }
         const key = tab.join(' ');
-        if(cache[key] !== undefined){
+        if(cache.get(key) !== undefined){
             ret = {cycles:count, 
-                   blockBeforeRepetition : count - cache[key]};
+                   blockBeforeRepetition : count - cache.get(key)};
             break;
         }
-        cache[key] =count;
+        cache.set(key, count);
     }
-
     return ret;
 }
 
