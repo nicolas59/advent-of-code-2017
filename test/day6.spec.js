@@ -11,14 +11,18 @@ var assert = require('assert');
 var getNumberOfCycles = require("../dist/day6").getNumberOfCycles
 
 describe('Test for day6 ', function () {
-    it('must be equal 5', function () {
-        assert.equal(5, getNumberOfCycles("0 2 7 0"));
+    it('must be equal 5/4', function () {
+        var ret =  getNumberOfCycles("0 2 7 0");
+        assert.equal(5, ret.cycles);
+        assert.equal(4, ret.blockBeforeRepetition);
     });  
    
 
     //
-    it('must be equal 7864', function () {
-        assert.equal(7864, getNumberOfCycles("0	5	10	0	11	14	13	4	11	8	8	7	1	4	12	11"));
+    it('must be equal 7864/1695', function () {
+        var ret =  getNumberOfCycles("0	5	10	0	11	14	13	4	11	8	8	7	1	4	12	11");
+        assert.equal(7864, ret.cycles);
+        assert.equal(1695, ret.blockBeforeRepetition);
     });  
 });
 

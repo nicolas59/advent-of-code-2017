@@ -1,6 +1,11 @@
 
+interface Result {
+    cycles : number,
+    blockBeforeRepetition : number
+}
 
-function getNumberOfCycles(data:string):number{
+
+function getNumberOfCycles(data:string):Result{
     var tab = data.match(/([0-9]+)/g).map(item => parseInt(item));
     var getMaxIndex = (array:Array<number>) =>{
         var ret = 0;
@@ -11,12 +16,11 @@ function getNumberOfCycles(data:string):number{
                 max = item;
             }
         });
-        //console.log(ret, array);
         return ret;
 
     }
 
-
+ var ret : Result;
     var count =0;
     var cache:any={};
     //cache[tab.join(' ')] =0;
@@ -40,13 +44,16 @@ function getNumberOfCycles(data:string):number{
         //console.log(tab.join(' '));
         
         if(cache[tab.join(' ')] !== undefined){
+            ret = {cycles:count, 
+                blockBeforeRepetition : count - cache[tab.join(' ')]};
             break;
         }
        
-        cache[tab.join(' ')] =0;
+        
+        cache[tab.join(' ')] =count;
     }
 
-    return count;
+    return ret;
 }
 
 
