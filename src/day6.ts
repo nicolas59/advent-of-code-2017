@@ -28,29 +28,19 @@ function getNumberOfCycles(data:string):Result{
         var maxIndex = getMaxIndex(tab);
         count++;
         var val = tab[maxIndex];
-       
         tab[maxIndex] = 0;
         var pos = maxIndex;
-        while(val != 0){
-            if(pos == tab.length-1){
-                pos = 0;
-            }else{
-                pos++;
-            }
-            val--;
+        for(;val != 0; val--){
+            pos =  pos === tab.length-1?0:++pos;
             tab[pos]++;
         }
-
-        //console.log(tab.join(' '));
-        
-        if(cache[tab.join(' ')] !== undefined){
+        const key = tab.join(' ');
+        if(cache[key] !== undefined){
             ret = {cycles:count, 
-                blockBeforeRepetition : count - cache[tab.join(' ')]};
+                   blockBeforeRepetition : count - cache[key]};
             break;
         }
-       
-        
-        cache[tab.join(' ')] =count;
+        cache[key] =count;
     }
 
     return ret;
