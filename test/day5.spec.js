@@ -31,8 +31,9 @@ describe('Test for day5', function () {
         assert.equal(10, getNumberOfSteps(data1, addOperationStep2));
     });
     
-    it('must be equal +28040648', function () {
+    it('must be equal +28040648', function (done) {
         assert.equal(+28040648, getNumberOfSteps(data, addOperationStep2));
+        done();
     });  
 
 });
