@@ -16,7 +16,7 @@ before(function (done) {
 });
 
 describe('Test for day5', function () {
-
+   
     it('must be equal 4', function () {
         var data1 = "0 3 0 1 -3".split(" ").join("\n");
         assert.equal(5, getNumberOfSteps(data1, addOperationStep1));
@@ -32,6 +32,7 @@ describe('Test for day5', function () {
     });
     
     it('must be equal +28040648', function (done) {
+        this.timeout(3000);
         assert.equal(+28040648, getNumberOfSteps(data, addOperationStep2));
         done();
     });  
