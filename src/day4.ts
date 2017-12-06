@@ -17,7 +17,7 @@ function isAvailablePassPhrasesWitoutAnagram(data:string) {
 }
 
 function getNumberOfAvailablesPassPhrases(data:string, fn : (arg:string)=>boolean){
-    return data.split("\r\n")
+    return data.split("\n")
      .map(passphrase => Number(fn(passphrase)?1:0))
      .reduce((p,n) => p+n);
 }
