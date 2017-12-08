@@ -1,30 +1,15 @@
-function getRegistreVal(registres:Map<String, number>, varname: string) {
-    var v = registres.get(varname);
-    if (v === undefined) {
-        v = 0;
-        registres.set(varname, 0)
-    }
-    return v;
-}
+
 
 const reg = /([a-z]+) (inc|dec) ([\\-\d]+) if ([a-z]+) (<|>|<=|>=|!=|==) ([\\-\d]+)/
 
 // Comparator
-const EQUALS  = (val1:number, val2:number) => val1 == val2;
-const GREATER  = (val1:number, val2:number) => val1 > val2;
-const LESS  = (val1:number, val2:number) => val1 < val2;
-const GREATER_OR_EQUAL  = (val1:number, val2:number) => GREATER(val1, val2) || EQUALS(val1, val2);
-const LESS_OR_EQUAL  = (val1:number, val2:number) => LESS(val1, val2) || EQUALS(val1, val2);
-const NOT_EQUAL =  (val1:number, val2:number) => !EQUALS(val1, val2);
-
-
 let comparators = new Map<string, (val1:number, val2:number) => boolean>();
-comparators.set("==", EQUALS);
-comparators.set(">", GREATER);
-comparators.set(">=", GREATER_OR_EQUAL);
-comparators.set("<", LESS);
-comparators.set("<=", LESS_OR_EQUAL);
-comparators.set("!=", NOT_EQUAL);
+comparators.set("==", (val1:number, val2:number) => val1 == val2);
+comparators.set(">",  (val1:number, val2:number) => val1 > val2);
+comparators.set(">=", (val1:number, val2:number) =>  val1 >= val2);
+comparators.set("<",  (val1:number, val2:number) => val1 < val2);
+comparators.set("<=",  (val1:number, val2:number) => val1 <= val2);
+comparators.set("!=", (val1:number, val2:number) => val1 != val2);
 
 //Operators
 let operators = new Map<string,  (val1:number, val2:number) => number>();
@@ -36,9 +21,7 @@ function evaluateExpression(registres:Map<string, number>, expression:string){
     const valcI = parseInt(valc);
     const valVarc = getRegistreVal(registres, varc);
     if(comparators.get(cmp)(valVarc, valcI)){
-        var var1Val = getRegistreVal(registres, var1);
-        var var2val = +var2;
-        registres.set(var1, operators.get(op)(var1Val, var2val));
+        registres.set(var1, operators.get(op)( getRegistreVal(registres, var1),  +var2));
     }
 }
 
@@ -51,6 +34,16 @@ function getMaximun(registres: Map<string, number>) : {name:string, val :number}
         }
     });
     return {name:varName, val:varValue};    
+}
+
+
+function getRegistreVal(registres:Map<String, number>, varname: string) {
+    var v = registres.get(varname);
+    if (v === undefined) {
+        v = 0;
+        registres.set(varname, 0)
+    }
+    return v;
 }
 
 function solve1(data: string): number {
