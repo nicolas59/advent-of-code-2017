@@ -9,7 +9,7 @@ function addOperationStep2(move:number){
 }
 
 function getNumberOfSteps(data:string, fn:(arg:number)=>number){
-    const tab = data.split('\n').map(t => parseInt(t, 10));
+    const tab = data.split('\n').map(Number);
     let nbSteps =0;
     let currentIndex =0;
     let move = tab[0];

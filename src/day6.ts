@@ -17,13 +17,13 @@ function getMaxIndex(array:Array<number>) {
 }
 
 function getNumberOfCycles(data:string):Result{
-    var tab = data.split(/\s/).map(item => parseInt(item));  
+    let tab = data.split(/\s/).map(Number);  
     const tabLength = tab.length;
-    var ret : Result;
+    let ret : Result;
     let cache = new Map<string, number>();
-    for(var count =1;; count++){
-        var pos = getMaxIndex(tab);
-        var val = tab[pos];
+    for(let count =1;; count++){
+        let pos = getMaxIndex(tab);
+        let val = tab[pos];
         tab[pos] = 0;
         //var pos = maxIndex;
         for(;val != 0; val--){

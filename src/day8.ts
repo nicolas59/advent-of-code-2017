@@ -36,18 +36,10 @@ function evaluateExpression(registres:Map<string, number>, expression:string){
     const valcI = parseInt(valc);
     const valVarc = getRegistreVal(registres, varc);
     if(comparators.get(cmp)(valVarc, valcI)){
-        var var1Val = getRegistreVal(registres, var1).valueOf();
+        var var1Val = getRegistreVal(registres, var1);
         var var2val = +var2;
         registres.set(var1, operators.get(op)(var1Val, var2val));
     }
-}
-
-function solve1(data: string): number {
-    let registres = new Map<string, number>();
-    data.split("\n").forEach(item => {
-        evaluateExpression(registres, item);
-    })
-    return getMaximun(registres).val.valueOf();
 }
 
 function getMaximun(registres: Map<string, number>) : {name:string, val :number}{
@@ -59,6 +51,14 @@ function getMaximun(registres: Map<string, number>) : {name:string, val :number}
         }
     });
     return {name:varName, val:varValue};    
+}
+
+function solve1(data: string): number {
+    let registres = new Map<string, number>();
+    data.split("\n").forEach(item => {
+        evaluateExpression(registres, item);
+    })
+    return getMaximun(registres).val.valueOf();
 }
 
 function solve2(data: string): number {
